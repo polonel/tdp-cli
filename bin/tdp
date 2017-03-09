@@ -1,0 +1,34 @@
+#!/bin/sh
+(set -o igncr) 2>/dev/null && set -o igncr; # cygwin encoding fix
+
+basedir=`dirname "$0"`
+
+case `uname` in
+    *CYGWIN*) basedir=`cygpath -w "$basedir"`;;
+esac
+
+NODE_EXE="$basedir/node.exe"
+if ! [ -x "$NODE_EXE" ]; then
+  NODE_EXE=node
+fi
+
+TDP_CLI_JS="$basedir/node_modules/tdp/bin/tdp-cli.js"
+
+case `uname` in
+  *MINGW*)
+    TDP_PREFIX=`"$NODE_EXE" "$TDP_CLI_JS" prefix -g`
+    TDP_PREFIX_TDP_CLI_JS="$TDP_PREFIX/node_modules/tdp/bin/tdp-cli.js"
+    if [ -f "$TDP_PREFIX_TDP_CLI_JS" ]; then
+      TDP_CLI_JS="$TDP_PREFIX_TDP_CLI_JS"
+    fi
+    ;;
+  *CYGWIN*)
+    TDP_PREFIX=`"$NODE_EXE" "$TDP_CLI_JS" prefix -g`
+    TDP_PREFIX_TDP_CLI_JS="$TDP_PREFIX/node_modules/tdp/bin/tdp-cli.js"
+    if [ -f "$TDP_PREFIX_TDP_CLI_JS" ]; then
+      TDP_CLI_JS="$TDP_PREFIX_TDP_CLI_JS"
+    fi
+    ;;
+esac
+
+"$NODE_EXE" "$TDP_CLI_JS" "$@"

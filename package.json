@@ -1,0 +1,30 @@
+{
+  "name": "tdp",
+  "version": "0.1.0",
+  "description": "Trudesk Plugin CLI",
+  "main": "./lib/tdp.js",
+  "bin": "./lib/tdp-cli.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Chris Brame <polonel@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "JSONStream": "^1.3.0",
+    "async": "^2.1.4",
+    "chalk": "^1.1.3",
+    "clear": "^0.0.1",
+    "clui": "^0.3.1",
+    "colors": "^1.1.2",
+    "fstream": "^1.0.10",
+    "graceful-fs": "^4.1.11",
+    "minimist": "^1.2.0",
+    "mkdirp": "^0.5.1",
+    "prompt": "^1.0.0",
+    "request": "^2.79.0",
+    "rimraf": "^2.5.4",
+    "tar": "^2.2.1",
+    "touch": "^1.0.0",
+    "underscore": "^1.8.3"
+  }
+}
