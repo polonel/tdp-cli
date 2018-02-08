@@ -28,6 +28,11 @@
       case "remove":
         tdp.remove(argv._[1]);
         break;
+      case "pack":
+        tdp.pack(argv._[1], function(err, data) {
+          
+        });
+        break;
       default:
         console.log(chalk.red('Invalid Command.'));
         console.log('');
